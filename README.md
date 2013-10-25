@@ -13,7 +13,7 @@ Supported archive types are:
 - `tar.gz`, `tgz`
 - `tar.bz2`, `tbz2`
 - `tar.xz`, `txz`
-- `zip`
+- `zip`, `tar`
 
 
 Usage
@@ -24,6 +24,7 @@ Example:
     archive { 'apache-tomcat-6.0.26':
       ensure => present,
       url    => 'http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz',
+      extension => 'tar.gz',
       target => '/opt',
     }
 

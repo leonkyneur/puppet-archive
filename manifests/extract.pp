@@ -51,12 +51,14 @@ define archive::extract (
       $extract_targz  = "tar --no-same-owner --no-same-permissions -xzf ${src_target}/${name}.${extension} -C ${target}"
       $extract_tarxz  = "tar --no-same-owner --no-same-permissions -xJf ${src_target}/${name}.${extension} -C ${target}"
       $extract_tarbz2 = "tar --no-same-owner --no-same-permissions -xjf ${src_target}/${name}.${extension} -C ${target}"
+      $extract_tar    = "tar --no-same-owner --no-same-permissions -xf ${src_target}/${name}.${extension} -C ${target}"
 
       $unpack_command = $extension ? {
         'zip'                => "mkdir -p ${target} && ${extract_zip}",
         /(tar.gz|tgz)/       => "mkdir -p ${target} && ${extract_targz}",
         /(tar.xz|txz)/       => "mkdir -p ${target} && ${extract_tarxz}",
         /(tar.bz2|tbz|tbz2)/ => "mkdir -p ${target} && ${extract_tarbz2}",
+        'tar'                => "mkdir -p ${target} && ${extract_tar}",
         default              => 'UNKNOWN',
       }
 
